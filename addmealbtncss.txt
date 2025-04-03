@@ -1,0 +1,145 @@
+/* Optional: Scroll margin for fixed header */
+#select-meal {
+  scroll-margin-top: 80px;
+}
+
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8fff2;
+  color: #333;
+}
+
+/* Header */
+.main-header {
+  background: linear-gradient(135deg, #2a6f2a, #3a8f3a);
+  padding: 1rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.main-nav a.active {
+  background-color: #fff;
+  color: #2a6f2a;
+}
+
+/* Add Your Meal Section */
+#add-meal-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#add-meal-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2a6f2a;
+}
+
+#add-meal-form .form-group {
+  margin-bottom: 15px;
+}
+
+#add-meal-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#add-meal-form input[type="text"],
+#add-meal-form input[type="file"],
+#add-meal-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d0efd1;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#add-meal-form textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #3a8f3a;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2a6f2a;
+}
+
+#result-message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #2a6f2a;
+}
+
+/* Footer */
+footer {
+  background-color: #2a6f2a;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+
+
+
+addmeal javascript-
+document.addEventListener("DOMContentLoaded", () => {
+  // Handle form submission for adding a meal
+  const form = document.getElementById("add-meal-form");
+  const resultMessage = document.getElementById("result-message");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Simulate successful meal submission
+    resultMessage.textContent = "Your meal has been added successfully!";
+
+    // Optionally, clear the form after submission
+    form.reset();
+
+    // In a real-world application, use AJAX/fetch to send form data to your server.
+  });
+
+  // Go Back Arrow - Redirect to homepage when clicked
+  const goBackArrow = document.getElementById("go-back-arrow");
+  goBackArrow.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.href = "homepage.html"; // Update the URL if your homepage path differs
+  });
+});

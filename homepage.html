@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Prep Master - Home</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* Add scroll margin to account for fixed header */
+      #select-meal {
+        scroll-margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <h1>Meal Prep Master 🥑</h1>
+
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#home" class="nav-link active"
+              ><i class="fas fa-home"></i> Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="savedmeals.html" class="nav-link">
+              <i class="fas fa-utensils"></i> Saved Meals
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#prepare-meal" class="nav-link"
+              ><i class="fas fa-book-open"></i> Recipes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link"
+              ><i class="fas fa-heart"></i> Favorites</a
+            >
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" id="authLink"
+              ><i class="fas fa-user"></i> Profile</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+      <div class="hero">
+        <div class="hero-content">
+          <h2>Transform Your Eating Habits</h2>
+          <p>Discover delicious, healthy recipes tailored to your lifestyle</p>
+          <button class="cta" onclick="scrollToCategories()">
+            Get Started
+          </button>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature-card">
+          <img src="breakfast.jpg" alt="Breakfast" />
+          <h3>Quick Breakfasts</h3>
+          <p>Start your day right with our healthy morning recipes</p>
+        </div>
+        <div class="feature-card">
+          <img src="lunch.jpg" alt="Lunch" />
+          <h3>Power Lunches</h3>
+          <p>Fuel your afternoon with nutritious meals</p>
+        </div>
+        <div class="feature-card">
+          <img src="dinner.jpg" alt="Dinner" />
+          <h3>Delicious Dinners</h3>
+          <p>End your day with satisfying, balanced meals</p>
+        </div>
+      </div>
+
+      <div class="categories" id="categories">
+        <h2>Popular Categories</h2>
+        <div class="category-grid">
+          <div
+            class="category-card"
+            style="background-image: url('vegetarian.jpg')"
+          >
+            <div class="category-content">
+              <h3>Vegetarian</h3>
+              <button class="explore-btn" data-category="vegetarian">
+                Explore
+              </button>
+            </div>
+          </div>
+          <div class="category-card" style="background-image: url('keto.jpg')">
+            <div class="category-content">
+              <h3>Keto</h3>
+              <button class="explore-btn" data-category="keto">Explore</button>
+            </div>
+          </div>
+          <div class="category-card" style="background-image: url('vegan.jpg')">
+            <div class="category-content">
+              <h3>Vegan</h3>
+              <button class="explore-btn" data-category="vegan">Explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Select Meal Section -->
+    <!-- In your select-meal section -->
+    <section id="select-meal" class="hidden">
+      <div class="back-arrow" onclick="goToHome()">
+        <i class="fas fa-arrow-left"></i>
+      </div>
+      <h2>Select Your Meal</h2>
+      <div id="meal-list" class="meal-grid"></div>
+    </section>
+
+    <!-- In your prepare-meal section -->
+    <section id="prepare-meal" class="hidden">
+      <div class="back-arrow" onclick="goToHome()">
+        <i class="fas fa-arrow-left"></i>
+      </div>
+      <h2>Prepare Your Meal</h2>
+      <div id="meal-details"></div>
+    </section>
+    <section id="select-meal" class="hidden">
+      <h2>Select Your Meal</h2>
+      <div id="meal-list" class="meal-grid">
+        <!-- Meals will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <!-- Prepare Meal Section -->
+    <section id="prepare-meal" class="hidden">
+      <h2>Prepare Your Meal</h2>
+      <div id="meal-details">
+        <!-- Meal details will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- After the categories section -->
+    <li class="add-meal-container">
+      <a href="addyourmeals.html" class="add-meal-btn">
+        <i class="fas fa-plus"></i> ADD YOUR MEALS 🍔
+      </a>
+    </li>
+
+    <footer>
+      <p>&copy; 2025 Meal Prep Master | Made with ❤️</p>
+    </footer>
+    <script src="homepage.js"></script>
+    <script>
+      // Add event listeners for explore buttons
+      document.addEventListener("DOMContentLoaded", function () {
+        const exploreButtons = document.querySelectorAll(".explore-btn");
+        exploreButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const category = this.getAttribute("data-category");
+            scrollToMeals(category);
+          });
+        });
+      });
+
+      function scrollToMeals(category) {
+        // First filter meals by category
+        filterMeals(category);
+
+        // Then scroll to section
+        const mealSection = document.getElementById("select-meal");
+        mealSection.classList.remove("hidden"); // Ensure section is visible
+
+        mealSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      function scrollToCategories() {
+        document.getElementById("categories").scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saved Meals - Meal Prep Master</title>
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="savedmeals.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <h1>Saved Meals 🍽️</h1>
+    </header>
+
+    <!-- Saved Meals Section -->
+    <main id="saved-meals-container">
+      <h2>Your Saved Meals</h2>
+      <div id="saved-meals-list" class="meal-grid">
+        <!-- Saved meals will be dynamically inserted here -->
+      </div>
+    </main>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="recipe-title"></h2>
+        <img id="recipe-image" src="" alt="Meal Image" />
+        <p id="recipe-text"></p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Meal Prep Master | Made with ❤️</p>
+    </footer>
+  </body>
+</html>
